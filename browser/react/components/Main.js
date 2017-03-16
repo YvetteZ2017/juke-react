@@ -8,6 +8,7 @@ import Artist from './Artist';
 import Sidebar from './Sidebar';
 import Player from './Player';
 import NewPlaylist from './NewPlaylist';
+import Playlist from './Playlist';
 import { convertAlbum, convertAlbums } from '../utils';
 
 export default class Main extends Component {
@@ -26,6 +27,7 @@ export default class Main extends Component {
               <Route exact path="/artists" component={Artists} />
               <Route path="/artists/:artistId" component={Artist} />
               <Route path="/new-playlist" component={NewPlaylist} />
+              <Route path="/playlists/:playlistId" component={Playlist} />
               <Route component={Albums} />
             </Switch>
           </div>

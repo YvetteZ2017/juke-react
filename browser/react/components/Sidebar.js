@@ -1,33 +1,63 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-const Sidebar = (props) => {
+export default class Sidebar extends Component {
 
-  const deselectAlbum = props.deselectAlbum;
+  constructor () {
+    super();
+    this.state = {
+      playlists: []
+    }
+  }
 
-  return (
-    <sidebar>
-      <img src="juke.svg" className="logo" />
-      <section>
-        <h4 className="menu-item">
-          <Link to="/albums">ALBUMS</Link>
-        </h4>
-      </section>
-      <section>
-        <h4 className="menu-item">
-          <Link to="/artists">ARTISTS</Link>
-        </h4>
-      </section>
-      <section>
-        <h4 className="text-muted">PLAYLISTS</h4>
-        <h4>
-          <Link className="btn btn-primary btn-block" to="/new-playlist">
-            <span className="glyphicon glyphicon-plus"></span> PLAYLIST
-          </Link>
-        </h4>
-      </section>
-    </sidebar>
-  );
+  componentDidMount () {
+    axios.get('/api/playlists')
+      .then(res => res.data)
+      .then(playlists => this.setState({ playlists }));
+  }
+
+
+  render () {
+
+    const playlists = this.state.playlists;
+
+    return (
+      <sidebar>
+        <img src="juke.svg" className="logo" />
+        <section>
+          <h4 className="menu-item">
+            <Link to="/albums">ALBUMS</Link>
+          </h4>
+        </section>
+        <section>
+          <h4 className="menu-item">
+            <Link to="/artists">ARTISTS</Link>
+          </h4>
+        </section>
+        <section>
+          <h4 className="text-muted">PLAYLISTS</h4>
+          <h4>
+            <Link className="btn btn-primary btn-block" to="/new-playlist">
+              <span className="glyphicon glyphicon-plus"></span> PLAYLIST
+            </Link>
+          </h4>
+        </section>
+        <hr />
+        <ul className="list-unstyled">
+          {
+            playlists.map(playlist => {
+              return (
+              <li key={playlist.id} className="playlist-item menu-item">
+                <Link to={`/playlists/${playlist.id}`}>{playlist.name}</Link>
+              </li>
+              );
+            })
+          }
+        </ul>
+      </sidebar>
+    );
+  }
+
 }
 
-export default Sidebar;
