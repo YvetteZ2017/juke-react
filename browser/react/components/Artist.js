@@ -55,7 +55,7 @@ class Artist extends React.Component {
         </ul>
         <Switch>
           <Route path={`/artists/${artist.id}/albums`} render={() => (
-            <Albums artistId={artist.id} />
+            <Albums albums={albums} />
           )} />
           <Route path={`/artists/${artist.id}/songs`} render={() => (
             <Songs songs={songs} />
