@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
-import Albums from '../components/Albums.js';
-import Album from '../components/Album';
-import Artists from '../components/Artists';
-import Artist from '../components/Artist';
-import Sidebar from '../components/Sidebar';
-import Player from '../components/Player';
-import NewPlaylist from '../components/NewPlaylist';
+import axios from 'axios';
+import Albums from './Albums';
+import Album from './Album';
+import Artists from './Artists';
+import Artist from './Artist';
+import Sidebar from './Sidebar';
+import Player from './Player';
+import NewPlaylist from './NewPlaylist';
+import { convertAlbum, convertAlbums } from '../utils';
 
 export default class Main extends Component {
 
