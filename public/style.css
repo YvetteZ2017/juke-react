@@ -32,7 +32,8 @@ sidebar {
   sidebar .menu-item {
     transition: border-left, 0.2s; }
     sidebar .menu-item a {
-      color: #c8c8c8; }
+      color: #c8c8c8;
+      padding-left: 10px; }
       sidebar .menu-item a:hover {
         color: white; }
     sidebar .menu-item.active, sidebar .menu-item:hover {

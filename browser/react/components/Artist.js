@@ -15,8 +15,7 @@ class Artist extends React.Component {
     };
   }
 
-  componentDidMount () {
-    const artistId = this.props.match.params.artistId;
+  fetchArtist (artistId) {
     const mainPath = `/api/artists/${artistId}`;
     const paths = [mainPath, `${mainPath}/albums`, `${mainPath}/songs`];
     Bluebird
@@ -27,6 +26,18 @@ class Artist extends React.Component {
         artist.songs = songs.map(convertSong);
         this.setState({ artist });
       });
+  }
+
+  componentDidMount () {
+    const artistId = this.props.match.params.artistId;
+    this.fetchArtist(artistId);
+  }
+
+  componentWillReceiveProps (nextProps) {
+    const nextArtistId = nextProps.match.params.artistId;
+    const currentArtistId = this.props.match.params.artistId;
+    if (nextArtistId !== currentArtistId)
+      this.fetchArtist(nextArtistId);
   }
 
   render () {
