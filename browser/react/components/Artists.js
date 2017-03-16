@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
+// Problem: having state down here makes it more difficult to implement FilterableArtists
 export default class Artists extends Component {
 
   constructor () {
