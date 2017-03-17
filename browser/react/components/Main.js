@@ -14,11 +14,15 @@ import { convertAlbum, convertAlbums } from '../utils';
 export default class Main extends Component {
 
   render () {
+
+    const playlists = this.props.playlists;
+    const addPlaylist = this.props.addPlaylist;
+
     return (
       <Router>
         <div id="main" className="container-fluid">
           <div className="col-xs-2">
-            <Sidebar deselectAlbum={this.deselectAlbum} />
+            <Sidebar playlists={playlists} />
           </div>
           <div className="col-xs-10">
             <Switch>
@@ -26,7 +30,7 @@ export default class Main extends Component {
               <Route path="/albums/:albumId" component={Album} />
               <Route exact path="/artists" component={StatefulArtists} />
               <Route path="/artists/:artistId" component={Artist} />
-              <Route path="/new-playlist" component={NewPlaylist} />
+              <Route path="/new-playlist" render={() => <NewPlaylist addPlaylist={addPlaylist} />} />
               <Route path="/playlists/:playlistId" component={Playlist} />
               <Route component={StatefulAlbums} />
             </Switch>

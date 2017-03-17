@@ -26,7 +26,8 @@ export default class NewPlaylist extends Component {
     const addPlaylist = this.props.addPlaylist;
     addPlaylist(this.state.inputValue);
     this.setState({
-      inputValue: ''
+      inputValue: '',
+      dirty: false
     });
   }
 

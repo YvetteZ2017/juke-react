@@ -4,23 +4,9 @@ import axios from 'axios';
 
 export default class Sidebar extends Component {
 
-  constructor () {
-    super();
-    this.state = {
-      playlists: []
-    }
-  }
-
-  componentDidMount () {
-    axios.get('/api/playlists')
-      .then(res => res.data)
-      .then(playlists => this.setState({ playlists }));
-  }
-
-
   render () {
 
-    const playlists = this.state.playlists;
+    const playlists = this.props.playlists;
 
     return (
       <sidebar>
