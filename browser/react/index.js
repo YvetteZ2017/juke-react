@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import StatefulPlaylists from './components/StatefulPlaylists';
+import Main from './components/Main';
 
 ReactDOM.render(
-  <StatefulPlaylists />,
+  <Main />,
   document.getElementById('app')
 );

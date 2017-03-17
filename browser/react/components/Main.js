@@ -13,10 +13,34 @@ import { convertAlbum, convertAlbums } from '../utils';
 
 export default class Main extends Component {
 
+  constructor () {
+    super();
+    this.state = {
+      playlists: []
+    };
+
+    this.addPlaylist = this.addPlaylist.bind(this);
+  }
+
+  componentDidMount () {
+    axios.get('/api/playlists')
+      .then(res => res.data)
+      .then(playlists => this.setState({ playlists }));
+  }
+
+  addPlaylist (name) {
+    axios.post('/api/playlists', { name })
+      .then(res => res.data)
+      .then(playlist => {
+        console.log(playlist)
+        this.setState({ playlists: [...this.state.playlists, playlist] })
+      });
+  }
+
   render () {
 
-    const playlists = this.props.playlists;
-    const addPlaylist = this.props.addPlaylist;
+    const playlists = this.state.playlists;
+    const addPlaylist = this.addPlaylist;
 
     return (
       <Router>
