@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Songs from './Songs';
 import AddSongForm from './AddSongForm';
 import axios from 'axios';
-import { convertSong } from '../utils';
 
 export default class Playlist extends React.Component {
 
@@ -19,7 +18,6 @@ export default class Playlist extends React.Component {
     axios.get(`/api/playlists/${playlistId}`)
       .then(res => res.data)
       .then(playlist => {
-        playlist.songs = playlist.songs.map(convertSong);
         this.setState({ playlist });
       });
   }
@@ -32,7 +30,7 @@ export default class Playlist extends React.Component {
     .then(song => {
       const playlist = this.state.playlist;
       const songs = playlist.songs;
-      const newSongs = [...songs, convertSong(song)];
+      const newSongs = [...songs, song];
       const newPlaylist = Object.assign({}, playlist, { songs: newSongs });
       this.setState({ playlist: newPlaylist });
     });

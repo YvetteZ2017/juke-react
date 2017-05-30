@@ -4,7 +4,6 @@ import Bluebird from 'bluebird';
 import axios from 'axios';
 import Albums from './Albums';
 import Songs from './Songs';
-import { convertAlbums, convertSong } from '../utils';
 
 class Artist extends React.Component {
 
@@ -22,8 +21,8 @@ class Artist extends React.Component {
       .map(paths, path => axios.get(path))
       .map(res => res.data)
       .spread((artist, albums, songs) => {
-        artist.albums = convertAlbums(albums);
-        artist.songs = songs.map(convertSong);
+        artist.albums = albums;
+        artist.songs = songs;
         this.setState({ artist });
       });
   }

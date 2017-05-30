@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Albums from './Albums';
-import { convertAlbums } from '../utils';
 
 export default class StatefulAlbums extends Component {
 
@@ -16,7 +15,7 @@ export default class StatefulAlbums extends Component {
     axios.get('/api/albums/')
       .then(res => res.data)
       .then(albums => {
-        this.setState({ albums: convertAlbums(albums) })
+        this.setState({ albums })
       });
   }
 
