@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Artists = (props) => {
+const AllArtists = (props) => {
 
   const artists = props.artists;
 
@@ -23,4 +23,4 @@ const Artists = (props) => {
   );
 }
 
-export default Artists;
+export default AllArtists;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import FilterInput from './FilterInput';
-import Artists from './Artists';
+import AllArtists from './AllArtists';
 
 export default class FilterableArtists extends React.Component {
 
@@ -31,7 +31,7 @@ export default class FilterableArtists extends React.Component {
           handleChange={this.handleChange}
           inputValue={inputValue}
         />
-        <Artists artists={filteredArtists} />
+        <AllArtists artists={filteredArtists} />
       </div>
     );
   }

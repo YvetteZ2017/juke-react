@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Albums = (props) => {
+const AllAlbums = (props) => {
 
   const albums = props.albums;
 
@@ -29,4 +29,4 @@ const Albums = (props) => {
   );
 };
 
-export default Albums;
+export default AllAlbums;

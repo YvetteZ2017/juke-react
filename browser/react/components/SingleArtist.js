@@ -2,10 +2,10 @@ import React from 'react';
 import { Route, Switch, Link } from 'react-router-dom';
 import Bluebird from 'bluebird';
 import axios from 'axios';
-import Albums from './Albums';
+import AllAlbums from './AllAlbums';
 import Songs from './Songs';
 
-class Artist extends React.Component {
+class SingleArtist extends React.Component {
 
   constructor () {
     super();
@@ -54,7 +54,7 @@ class Artist extends React.Component {
         </ul>
         <Switch>
           <Route path={`/artists/${artist.id}/albums`} render={() => (
-            <Albums albums={albums} />
+            <AllAlbums albums={albums} />
           )} />
           <Route path={`/artists/${artist.id}/songs`} render={() => (
             <Songs songs={songs} />
@@ -65,5 +65,5 @@ class Artist extends React.Component {
   }
 }
 
-export default Artist;
+export default SingleArtist;
 
