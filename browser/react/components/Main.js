@@ -31,7 +31,6 @@ export default class Main extends Component {
     axios.post('/api/playlists', { name })
       .then(res => res.data)
       .then(playlist => {
-        console.log(playlist)
         this.setState({ playlists: [...this.state.playlists, playlist] })
       });
   }
