@@ -11,7 +11,7 @@ export default class AllAlbums extends React.Component {
     {
       this.props.albums.map(album => (
       <div className="col-xs-4" key={album.id}>
-      <a className="thumbnail" href={`api/albums/${album.id}`}
+      <a className="thumbnail" href="#"
       onClick={() => this.props.handleClick(album.id)}
       >
         <img src={album.imageUrl} />
@@ -29,4 +29,8 @@ export default class AllAlbums extends React.Component {
   </div>
   )
   }
+}
+
+{
+  // `api/albums/${album.id}`
 }

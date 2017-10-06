@@ -38,7 +38,7 @@ export default class Main extends React.Component {
         this.setState({selectedAlbum: album})
         this.setState({haveAlbum: true})
         console.log('state: ', this.state)
-        // render(<SingleAlbum album={this.state.selectedAlbum}/>)
+        this.render()
       })
       .catch(logError)
   }
