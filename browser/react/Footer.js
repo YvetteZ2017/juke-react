@@ -8,7 +8,7 @@ export default class Footer extends React.Component{
       <span className="glyphicon glyphicon-step-backward"></span>
     </button>
     <button className="btn btn-default">
-      <span className="glyphicon glyphicon-play"></span>
+      <span className={this.props.playingSong ? "glyphicon glyphicon-pause" : "glyphicon glyphicon-play"}></span>
     </button>
     <button className="btn btn-default">
       <span className="glyphicon glyphicon-step-forward"></span>

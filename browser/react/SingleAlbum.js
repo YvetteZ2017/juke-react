@@ -4,11 +4,12 @@ import axios from 'axios'
 export default class SingleAlbum extends React.Component {
   render() {
     console.log('WE ARE IN SINGLE ALBUM')
+    const { album } = this.props
     return (
       <div className="album col-xs-10">
       <div>
-        <h3>{this.props.album.name}</h3>
-        <img src={this.props.album.imageUrl} className="img-thumbnail" />
+        <h3>{album.name}</h3>
+        <img src={album.imageUrl} className="img-thumbnail" />
       </div>
       <table className='table'>
         <thead>
@@ -20,26 +21,22 @@ export default class SingleAlbum extends React.Component {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>
-              <button className="btn btn-default btn-xs">
-                <span className="glyphicon glyphicon-play"></span>
-              </button>
-            </td>
-            <td>I SHOULD BE A SONG NAME</td>
-            <td>I SHOULD BE A STRING OF THIS SONG'S ARTISTS</td>
-            <td>I SHOULD BE A SONG GENRE</td>
-          </tr>
-          <tr>
-            <td>
-              <button className="btn btn-default btn-xs">
-                <span className="glyphicon glyphicon-play"></span>
-              </button>
-            </td>
-            <td>I SHOULD BE ANOTHER SONG NAME</td>
-            <td>I SHOULD BE A STRING OF THAT SONG'S ARTISTS</td>
-            <td>I SHOULD BE A SONG GENRE</td>
-          </tr>
+          {album.songs.map(song => (
+            <tr key={song.id} className={+this.props.currentSong === +song.id ? 'active' : ""}>
+              <td>
+                <button className="btn btn-default btn-xs">
+                  <span className={+this.props.currentSong === +song.id ? "" : "glyphicon glyphicon-play"}
+                  onClick={ () => this.props.start(song.audioUrl) }
+                  >
+                  </span>
+                </button>
+              </td>
+              <td>{song.name}</td>
+              <td>{song.artists[0].name}</td>
+              <td>{song.genre}</td>
+            </tr>
+            ))
+          }
         </tbody>
       </table>
     </div>
